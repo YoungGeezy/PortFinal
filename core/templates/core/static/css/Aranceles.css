@@ -1,0 +1,112 @@
+/**Color y borde de el fondo**/
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+/**Cajas donde contiene la informacion**/
+#container{
+    margin: 150px auto;
+    width: 600px ;
+    align-self: center;
+}
+/**Diseño de las tablas**/
+table{
+    background-color: white;
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+}
+/**Textos y diseños**/
+th,td{
+    border: solid 1px black;
+    padding: 5px;
+    width: 100px;
+    word-wrap: break-word;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+thead{
+    background-color: #246355;
+    border-bottom: solid 5px #0F362D;
+    color: white;
+}
+tr:nth-child(even){
+    background-color: #ddd;
+}
+tr:hover td{
+    background-color: #369681;
+    color: white;
+}
+/**Color y borde de la cabezera**/
+.card-header{
+    background-color: #8cecbc;
+}
+.card-responsive{
+    background-color: rgb(255, 255, 255);
+}
+.card-body{
+    background-color: #e0fdd8;
+    margin: 1rem;
+    padding: 1rem;
+    border: 2px solid #ccc;
+    text-align: center;
+    border-radius: 15px;
+  }
+h3{
+    text-align: center;
+}
+/**Tipos de texto y diseño."Cabezera de tabla"**/
+.col-4{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: initial;
+    width: 20%;
+}
+.col-2{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: end;
+    width: 30%;
+}
+/**Boton para salir**/
+.btn-primary{
+    text-decoration:none;
+    padding: 0 16px;
+    border-radius: 2px;
+    width: 120px;
+    background-color: #018786;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    color: #fff;
+    transition: background-color 15ms linear,
+      box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    height: 70px;
+    line-height: 2.25rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+/**Boton para agregar**/
+.btn-success{
+    text-decoration:none;
+    padding: 0 16px;
+    border-radius: 2px;
+    width: 20%;
+    background-color: #018786;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    color: #fff;
+    transition: background-color 15ms linear,
+      box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    height: 15%;
+    line-height: 2.25rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    }
+/**cambio de color del boton para agregar**/
+.btn-success:hover {
+    background-color:#80e6bf;
+}    

@@ -1,0 +1,133 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+<link rel="stylesheet" href="../../../static/css/edicion.css">
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <div class="card">
+
+            <div class="card-title">
+                <h2>Edicion de Horario</h2>
+            </div>
+
+                <div class="card-body">               
+                    <form action="/editarHorario" method="POST">{% csrf_token %}
+                        
+                        
+                        <div class="form-group">
+                            <label for="">ID Horario</label>
+                            <input type="number" maxlength="11" name="idhorario" class="form-control" readonly value="{{id.id_horario}}" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>Dia: </label>
+                            <select name="dia" class="form-select">
+                                {% if id.dia == 'Lunes' %}
+                                <option value="Lunes" selected>Lunes</option>
+                                <option value="Martes">Martes</option>
+                                <option value="Miercoles">Miercoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>    
+                                {% elif id.dia == 'Martes' %}
+                                <option value="Lunes" >Lunes</option>
+                                <option value="Martes" selected>Martes</option>
+                                <option value="Miercoles">Miercoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>      
+                                {% elif id.dia == 'Miercoles' %}
+                                <option value="Lunes" >Lunes</option>
+                                <option value="Martes" >Martes</option>
+                                <option value="Miercoles" selected>Miercoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>     
+                                {% elif id.dia == 'Jueves' %}
+                                <option value="Lunes" >Lunes</option>
+                                <option value="Martes" >Martes</option>
+                                <option value="Miercoles" >Miercoles</option>
+                                <option value="Jueves" selected>Jueves</option>
+                                <option value="Viernes">Viernes</option>        
+                                {% elif id.dia == 'Viernes' %}
+                                <option value="Lunes" >Lunes</option>
+                                <option value="Martes" >Martes</option>
+                                <option value="Miercoles" >Miercoles</option>
+                                <option value="Jueves" >Jueves</option>
+                                <option value="Viernes" selected>Viernes</option>
+                                {% endif %}                    
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Hora Inicio</label>
+                            <input type="text"  name="horainicio" class="form-control" minlength="5" maxlength="5" value="{{id.hora_inicio}}" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Hora Termino</label>
+                            <input type="text"  name="horatermino" class="form-control" minlength="5" maxlength="5" value="{{id.hora_termino}}" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Año</label>
+                            <input type="number"  name="annio" class="form-control" value="{{id.annio}}" required="required" minlength="2012" maxlength="2025" readonly >
+                        </div>
+                        <div class="form-group">
+                        <label>Asignatura: </label>
+                        <select name="asignatura" class="form-select">
+                            
+                            {% for x in asignaturas %}
+                            {% if x.id_asignatura == id.id_asignatura.id_asignatura %}
+                            <option value="{{ x.id_asignatura }}" selected>{{ x.nombre }}</option>
+                            {% else %}
+                            <option value="{{ x.id_asignatura }}" >{{ x.nombre }}</option>    
+                            {% endif %}          
+                            {% endfor %}
+                        </select>
+                    </div>
+                        
+                    <div class="form-group">
+                        <label>Sala: </label>
+                        <select name="sala" class="form-select">
+                            
+                            {% for x in salas %}
+                            {% if x.id_sala == id.id_sala.id_sala %}
+                            <option value="{{ x.id_sala }}" selected>{{ x.id_sala }}</option>
+                            {% else %}
+                            <option value="{{ x.id_sala }}" >{{ x.id_sala }}</option>    
+                            {% endif %}          
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Profesor: </label>
+                        <select name="profesor" class="form-select">
+                            
+                            {% for x in profesores %}
+                            {% if x.rut_profesor == id.rut_profesor.rut_profesor %}
+                            <option value="{{ x.rut_profesor }}" selected>{{ x.p_nombre }} {{x.s_nombre}} {{ x.ap_paterno }}</option>
+                            {% else %}
+                            <option value="{{ x.rut_profesor }}" >{{ x.p_nombre }} {{x.s_nombre}} {{ x.ap_paterno }}</option>    
+                            {% endif %}          
+                            {% endfor %}
+                        </select>
+                    </div>
+                        <div class="form-group">
+                            <label>Curso: </label>
+                            <select name="curso" class="form-select">
+                                
+                                {% for x in cursos %}
+                                {% if id.id_curso.id_curso == x.id_curso %}
+                                <option value="{{ x.id_curso }}" selected>{{ x.grado }} {{ x.educacion }} {{ x.letra }}</option>
+                                {% else %}
+                                <option value="{{ x.id_curso }}" >{{ x.grado }} {{ x.educacion }} {{ x.letra }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <br>
+
+                        <br>
+                        <button type="submit" class="btn btn-primary">Editar</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

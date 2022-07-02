@@ -1,0 +1,88 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  
+    <title>Horarios</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/establecimiento.css">
+    <script type="text/javascript">
+        function ConfirmDelete()
+        {
+            var respuesta = confirm("¿Estas seguro que deseas eliminar?");
+
+            if (respuesta == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    </script>
+  
+      <div class="card"> 
+          <div class="card-header">
+              <div class="row">
+                  <div class="col-4">
+                    Bienvenido {{ user.first_name.upper }} {{ user.last_name.upper }}
+                  </div>
+                  <div class="col-2 offset-6 justify-items-end" >
+                    <a name="" id="" class="btn btn-primary" href="{% url 'logout' %}" role="button">Cerrar Sesion</a>
+                    <input class="btn btn-primary" value="Volver" onclick="history.back()">
+                  </div>
+
+              </div>
+              
+          </div>
+          <div class="container">
+            <div class="card-body">
+                <h4 class="card-title">Horarios <a name="" id="" class="btn btn-success" href="{% url 'ingresarHorario' %}" role="button">Agregar Horario</a></h4>
+                  <table class="table table-hover">
+                      <thead>
+                          <tr>
+                              
+                              
+                              <th>Dia</th>   
+                              <th>Hora Inicio</th>
+                              <th>Hora Termino</th>  
+                              <th>Año</th>
+                              <th>Asignatura</th>
+                              <th>Curso</th>
+                              <th>Sala</th>
+                              <th>Rut Profesor</th>
+                              <th>Acciones</th>
+  
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for x in horarios %}
+                          <tr>
+                              
+                              
+                              <td>{{x.dia}}</td>
+                              <td>{{x.hora_inicio}}</td>                            
+                              <td>{{x.hora_termino}}</td>          
+                              <td>{{x.annio}}</td>
+                              <td>{{x.id_asignatura.nombre}}</td>
+                              <td>{{x.id_curso.grado}} {{x.id_curso.educacion}} {{x.id_curso.letra}} </td>
+                              <td>{{x.id_sala.id_sala}}</td>
+                              <td>{{x.rut_profesor.p_nombre}} {{x.rut_profesor.s_nombre}} {{x.rut_profesor.ap_paterno}}</td>
+                              
+                              
+                              <td><a name="" id="" class="btn btn-info" href="Horarios/edicionHorario/{{x.id_horario}}" role="button">Editar</a>  <a name="" id="" class="btn btn-danger" onclick="return ConfirmDelete()" href="Horarios/eliminarHorario/{{x.id_horario}}" role="button">Borrar</a></td>
+                              
+                              
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                  </table>
+                  
+                
+            </div>
+          </div>

@@ -1,0 +1,100 @@
+form {
+    width: 35%;
+    border: none;
+    margin: 23px;
+    padding: 25px;
+    text-align: initial;
+}
+label {
+    font-size: 13px;
+    display: block;
+    width: 100%;
+}
+input, textarea{
+   margin-bottom: 20px;
+   width: 100%;
+   padding: 5px;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing:border-box;
+   box-sizing: border-box;
+   border: 2px solid rgb(20, 18, 18);
+}
+textarea{
+    resize: vertical;
+    max-height: 300px;
+    min-height: 100px;
+    
+}
+input[type="submit"] {
+    margin-bottom: 0px;
+    background: #bb952b;
+    color: #fff;
+    border: none;
+}
+input[type="submit"]:hover {
+    background: #804d00;
+    cursor: pointer;
+}
+body{
+    background-color: rgb(102, 112, 112);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: normal;
+}
+.container {
+    width: 90%;
+    max-width: 1000px;
+    border: 0px solid rgb(53, 52, 52);
+    margin: auto;
+    font-size: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+.container-1{
+    display: block;
+    color: rgb(180, 150, 98);
+    background: url(../assets/prueba1.svg);
+    box-shadow: 2px 2px 10px rgba(0,0,0,.25);
+}
+.container-1 > div{
+    display: block;
+    padding: 20px;
+    color: #fff;
+    background-color: #010fcc;
+    box-shadow: 2px 2px 10px rgba(0,0,0,.25);
+}
+h1{
+    font-size: 25px;
+    display: block;
+    width: 100%;
+}  
+  #contactForm .error {
+    color: red;
+    font-size: 12px; }
+  
+  #contactForm .form-control {
+    font-size: 16px; }
+  
+  #message {
+    resize: vertical; }
+  
+  #form-message-warning, #form-message-success {
+    display: none; }
+  
+  #form-message-warning {
+    color: red; }
+  
+  #form-message-success {
+    color: #28a745;
+    font-size: 18px;
+    font-weight: 500; }
+  
+  .submitting {
+    float: left;
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+    font-size: 16px;
+    font-weight: 500; }
+  

@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+<link rel="stylesheet" href="../../../static/css/edicion.css">
+
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <div class="card">
+
+            <div class="card-title">
+                <h2>Edicion de Salas</h2>
+            </div>
+
+                <div class="card-body">               
+                    <form action="/editarSala" method="POST">{% csrf_token %}
+                        
+                        
+                        <div class="form-group">
+                            <label for="">ID Sala</label>
+                            <input type="number" name="idsala" max="11" class="form-control" value="{{ id.id_sala }}" readonly required="required">
+                        </div>
+                        <label for="">Tipo Sala</label>
+                        <select name="tipo" id="" class="form-select">
+                            {% if id.tipo_sala == 'Aula' %}               
+                            <option value="Aula" selected>Aula</option>
+                            <option value="Laboratorio">Laboratorio</option>
+                            {% else %}
+                            <option value="Aula" >Aula</option>
+                            <option value="Laboratorio" selected>Laboratorio</option>
+                            {% endif %}
+                        </select>
+                        <br>
+                        <label for="">Colegio</label>
+                        <select name="colegio" id="" class="form-select">
+                            {% for x in colegios %}
+                            {% if x.id_colegio == id.id_colegio.id_colegio %}
+                            <option value="{{x.id_colegio}}" selected>{{x.nombre}}</option>
+                            {% else %}
+                            <option value="{{x.id_colegio}}" >{{x.nombre}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>                 
+                        <br>
+                        <button type="submit" class="btn btn-primary">Editar</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

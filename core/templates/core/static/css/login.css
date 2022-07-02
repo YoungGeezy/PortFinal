@@ -1,0 +1,16 @@
+.container{
+    width: 75%;
+    padding: 50px;
+
+}
+.col-md-6{
+    display: grid;
+    padding-block: initial;
+    flex: 0 0 70%;
+    max-width: 50%;
+    text-align: center;
+    align-content: space-evenly;
+    align-items: baseline;
+    justify-items: center;
+    justify-content: center;
+}

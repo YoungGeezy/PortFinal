@@ -1,0 +1,279 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head class="header">
+    <title>Datos Academicos</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="static/css/alumno.css">
+    
+   
+  </head>
+  <body>
+      <div class="card-responsive">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-4">
+                  ¡¡Bienvenido!! {{ user.first_name.upper }} {{ user.last_name.upper }}
+                </div>
+                <div style="text-align: end;" class="col-2 offset-6 justify-items-end" >
+                  <a name="" id="" class="btn btn-primary" href="{% url 'logout' %}" role="button">Salir</a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="container">
+
+        
+          <div class="card-body">
+              <h4 class="card-title">Notas</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Profesor</th>
+                            <th>Nota</th>
+                            <th>Tipo Evaluacion</th>
+                            <th>Fecha Evaluacion</th>
+                            <th>Asignatura</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for nota in notas %}
+                        <tr>
+                            <td>{{nota.rut_profesor.p_nombre}} {{nota.rut_profesor.ap_paterno}}</td>
+                            <td>{{nota.nota}}</td>
+                            <td>{{nota.tipo_evaluacion}}</td>
+                            <td>{{nota.fecha_evaluacion}}</td>
+                            <td>{{nota.id_asignatura.nombre}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+              
+          </div>
+        </div>
+        <div class="container">
+
+        
+          <div class="card-body">
+            <h4 class="card-title">Asistencias</h4>
+              <table class="table">
+                  <thead>
+                    
+                      <tr>
+                          
+                          <th>Fecha Asistencia</th>
+                          <th>Estado</th>
+                    
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for asistencia in asistencias %}
+                      <tr>
+                          
+                          <td>{{asistencia.fecha_asistencia}}</td>
+                          <td>{{asistencia.verificador}}</td>                         
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>           
+        </div>
+    </div>
+    <div class="container">
+
+    
+        <div class="card-body">
+            <h4 class="card-title">Observaciones</h4>
+              <table class="table">
+                  <thead>
+                    
+                      <tr>
+                          
+                          <th>Fecha Observacion</th>
+                          <th>Detalle</th>
+                          <th>Profesor</th>
+                          
+                    
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for observacion in observaciones %}
+                      <tr>
+                        
+                          <td>{{observacion.fecha_observacion}}</td>
+                          <td>{{observacion.detalle}}</td>
+                          <td>{{observacion.rut_profesor.p_nombre}} {{observacion.rut_profesor.ap_paterno}}</td>
+                               
+                                                
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>           
+        </div>
+    </div>
+    <br>
+    <br>
+<div class="container">
+    <div class="col-6 offset-6">
+        <h3>Horario</h3>
+    </div>
+        <div class="card-body">
+            <!--Lunes-->
+            <h4 class="card-title">Lunes</h4>
+              <table class="table">
+                  <thead>         
+                    <tr>   
+                                    <th>Hora</th>                               
+                                    <th>Asignatura</th>                                      
+                                    <th>Profesor</th>                           
+                                    <th>Sala</th>
+                                    <th>Colegio</th>                                                               
+                    </tr>
+                    </thead>
+                    <tbody>   
+                        {% for horario in horarios %}                  
+                      <tr>                                                      
+                                {% if horario.dia == 'Lunes' %}     
+                                    <td>{{horario.hora_inicio}}-{{horario.hora_termino}}</td>                                  
+                                    <td>{{horario.id_asignatura.nombre}}</td>
+                                    <td>{{horario.rut_profesor.p_nombre}} {{horario.rut_profesor.ap_paterno}}</td>
+                                    <td>{{horario.id_sala.id_sala}}</td>
+                                    <td>{{horario.rut_profesor.id_colegio.nombre}}</td>
+                                {% endif %}
+                            {% endfor %}
+                                
+                            
+                                          
+                      
+                      
+                  </tbody>
+              </table>           
+        </div>
+        <div class="card-body">
+            <!--Martes-->
+            <h4 class="card-title">Martes</h4>
+              <table class="table">
+                  <thead>         
+                    <tr>   
+                                    <th>Hora</th>                               
+                                    <th>Asignatura</th>                                      
+                                    <th>Profesor</th>                           
+                                    <th>Sala</th>
+                                    <th>Colegio</th>                  
+                    </tr>
+                    </thead>
+                    <tbody>   
+                        {% for horario in horarios %}                  
+                      <tr>                        
+   
+                                
+                                {% if horario.dia == 'Martes' %}     
+                                    <td>{{horario.hora_inicio}}-{{horario.hora_termino}}</td>                                  
+                                    <td>{{horario.id_asignatura.nombre}}</td>
+                                    <td>{{horario.rut_profesor.p_nombre}} {{horario.rut_profesor.ap_paterno}}</td>
+                                    <td>{{horario.id_sala.id_sala}}</td>
+                                    <td>{{horario.rut_profesor.id_colegio.nombre}}</td>
+                                {% endif %}
+                            {% endfor %}
+                  </tbody>
+              </table>           
+        </div>
+    
+    <div class="card-body">
+        <!--Miercoles-->
+        <h4 class="card-title">Miercoles</h4>
+          <table class="table">
+              <thead>         
+                <tr>   
+                                <th>Hora</th>                               
+                                <th>Asignatura</th>                                      
+                                <th>Profesor</th>                           
+                                <th>Sala</th>
+                                <th>Colegio</th>                  
+                </tr>
+                </thead>
+                <tbody>   
+                    {% for horario in horarios %}                  
+                  <tr>                        
+
+                            
+                            {% if horario.dia == 'Miercoles' %}     
+                                <td>{{horario.hora_inicio}}-{{horario.hora_termino}}</td>                                  
+                                <td>{{horario.id_asignatura.nombre}}</td>
+                                <td>{{horario.rut_profesor.p_nombre}} {{horario.rut_profesor.ap_paterno}}</td>
+                                <td>{{horario.id_sala.id_sala}}</td>
+                                <td>{{horario.rut_profesor.id_colegio.nombre}}</td>
+                            {% endif %}
+                        {% endfor %}
+              </tbody>
+          </table>           
+    </div>
+    <div class="card-body">
+        <!--Jueves-->
+        <h4 class="card-title">Jueves</h4>
+          <table class="table">
+              <thead>         
+                <tr>   
+                                <th>Hora</th>                               
+                                <th>Asignatura</th>                                      
+                                <th>Profesor</th>                           
+                                <th>Sala</th>
+                                <th>Colegio</th>                  
+                </tr>
+                </thead>
+                <tbody>   
+                    {% for horario in horarios %}                  
+                  <tr>                        
+
+                            
+                            {% if horario.dia == 'Jueves' %}     
+                                <td>{{horario.hora_inicio}}-{{horario.hora_termino}}</td>                                  
+                                <td>{{horario.id_asignatura.nombre}}</td>
+                                <td>{{horario.rut_profesor.p_nombre}} {{horario.rut_profesor.ap_paterno}}</td>
+                                <td>{{horario.id_sala.id_sala}}</td>
+                                <td>{{horario.rut_profesor.id_colegio.nombre}}</td>
+                            {% endif %}
+                        {% endfor %}
+              </tbody>
+          </table>           
+    </div>
+    <div class="card-body">
+        <!--Viernes-->
+        <h4 class="card-title">Viernes</h4>
+          <table class="table">
+              <thead>         
+                <tr>   
+                                <th>Hora</th>                               
+                                <th>Asignatura</th>                                      
+                                <th>Profesor</th>                           
+                                <th>Sala</th>
+                                <th>Colegio</th>                  
+                </tr>
+                </thead>
+                <tbody>   
+                    {% for horario in horarios %}                  
+                  <tr>                        
+
+                            
+                            {% if horario.dia == 'Viernes' %}     
+                                <td>{{horario.hora_inicio}}-{{horario.hora_termino}}</td>                                  
+                                <td>{{horario.id_asignatura.nombre}}</td>
+                                <td>{{horario.rut_profesor.p_nombre}} {{horario.rut_profesor.ap_paterno}}</td>
+                                <td>{{horario.id_sala.id_sala}}</td>
+                                <td>{{horario.rut_profesor.id_colegio.nombre}}</td>
+                            {% endif %}
+                        {% endfor %}
+              </tbody>
+          </table>           
+    </div>
+</div>
+</div>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  </body>
+</html>

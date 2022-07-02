@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+<link rel="stylesheet" href="../../../static/css/edicion.css">
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <div class="card">
+
+            <div class="card-title">
+                <h2>Edicion de Observacion</h2>
+            </div>
+
+                <div class="card-body">               
+                    <form action="/editarObservacion" method="POST">{% csrf_token %}
+                        <div class="form-group">
+                            <label >ID: </label>
+                            <input type="number" min="11" max="11" id="id_observacion" name="id_observacion" class="form-control" value="{{id.id_observacion}}"readonly>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fechaevaluacion">Fecha de observacion: </label>
+                            <input type="datetime-local" id="fechaobservacion" name="fechaobservacion" class="form-control" required value="2022-01-01">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Curso: </label>
+                            <select name="idlibro">
+                            {% for x in curso %}
+                                <option value="{{id_curso}}">{{x.grado}} {{x.educacion}} {{x.letra}}</option>
+                                   {% endfor %}                        
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Alumno: </label>
+                            <select name="rutalumno">
+                                {% for alumno in alumnos %}
+                                {% if alumno.rut_alumno == id.rut_alumno %}
+                                <option value="{{ alumno.rut_alumno }}" selected="{{id.rut_alumno}}">{{ alumno.p_nombre }} {{ alumno.ap_paterno }} {{ alumno.ap_materno }}</option>
+                                {% else %}
+                                <option value="{{ alumno.rut_alumno }}">{{ alumno.p_nombre }} {{ alumno.ap_paterno }} {{ alumno.ap_materno }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Rut profesor: </label>
+                            <select name="rutprofesor">                           
+                                <option>{{ user.rut_user }}</option>                           
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fechaevaluacion">Detalle: </label>
+                            <input type="text" id="detalle" name="detalle" class="form-control" maxlength="255" value="{{id.detalle}}">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Editar</button>
+                           
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

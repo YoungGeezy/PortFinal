@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+<link rel="stylesheet" href="../../../static/css/edicion.css">
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <div class="card">
+
+            <div class="card-title">
+                <h2>Ingresar Aranceles</h2>
+            </div>
+
+                <div class="card-body">               
+                    <form action="/registrarArancel" method="POST">{% csrf_token %}
+                        
+                    
+                        <div class="form-group">
+                            <label for="">Mes</label>
+                            <input type="text" maxlength="10" name="mes" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Valor</label>
+                            <input type="number"  name="valor" class="form-control"  maxlength="10" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Fecha Limite</label>
+                            <input type="date"  name="fecha" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>Estado: </label>
+                            <select name="estado" class="form-select">
+                                <option value="P">Pagado</option>
+                                <option value="N" selected>Pendiente</option>
+                                
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Alumno: </label>
+                            <select name="alumno" class="form-select">
+                                {% for x in alumnos %}
+                                <option value="{{ x.rut_alumno }}">{{ x.p_nombre }} {{ x.s_nombre }} {{ x.ap_paterno }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Agregar</button>  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,66 @@
+{% load crispy_forms_tags %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+<link rel="stylesheet" href="../../../static/css/edicion.css">
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <div class="card">
+
+            <div class="card-title">
+                <h2>Ingresar Asistencia</h2>
+            </div>
+
+                <div class="card-body">               
+                    <form action="/registrarAsistencia" method="POST">{% csrf_token %}
+                       
+
+                        <div class="btn-group-toggle"  data-toggle="buttons">
+                        
+                            <label class="btn btn-primary ">
+                            
+                            <input type="radio" name="verificador" value="Presente" checked> Presente
+                            </label>
+                            <label class="btn btn-primary">
+    
+                            <input type="radio" name="verificador"value="Ausente"> Ausente
+                            
+                            </label>                      
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Curso: </label>
+                            <select name="idlibro">
+                            {% for x in curso %}
+                                <option value="{{id_curso}}">{{x.grado}} {{x.educacion}} {{x.letra}}</option>
+                                   {% endfor %}                        
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Alumno: </label>
+                            <select name="rutalumno">
+                                {% for alumno in alumnos %}
+                                <option value="{{ alumno.rut_alumno }}">{{ alumno.p_nombre }} {{ alumno.ap_paterno }} {{ alumno.ap_materno }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Rut profesor: </label>
+                            <select name="rutprofesor">                           
+                                <option>{{ user.rut_user }}</option>                           
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Agregar</button>           
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                        
+                            
+                        

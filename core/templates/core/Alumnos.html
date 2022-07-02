@@ -1,0 +1,93 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  
+    <title>Alumnos</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/establecimiento.css">
+    <script type="text/javascript">
+        function ConfirmDelete()
+        {
+            var respuesta = confirm("¿Estas seguro que deseas eliminar?");
+
+            if (respuesta == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    </script> 
+  
+      <div class="card"> 
+          <div class="card-header">
+              <div class="row">
+                  <div class="col-4">
+                    Bienvenido {{ user.first_name.upper }} {{ user.last_name.upper }}
+                  </div>
+                  <div class="col-2 offset-6 justify-items-end" >
+                    <a name="" id="" class="btn btn-primary" href="{% url 'logout' %}" role="button">Cerrar Sesion</a>
+                    <input class="btn btn-primary" value="Volver" onclick="history.back()">
+                  </div>
+
+              </div>
+              
+          </div>
+          <div class="container">
+            <div class="card-body">
+                <h4 class="card-title">Alumnos <a name="" id="" class="btn btn-success" href="{% url 'ingresarAlumno' %}" role="button">Agregar Alumno</a></h4>
+                  <table class="table table-hover">
+                      <thead>
+                          <tr>
+                              
+                              <th>Rut</th>
+                              <th>Nombre</th>   
+                              <th>Fecha Nacimiento</th>
+                              <th>Genero</th>  
+                              <th>Direccion</th>
+                              <th>Nivel Socioeconomico</th>
+                              <th>Apoderado</th>
+                              <th>Colegio</th>
+                              <th>Curso</th>
+                              <th>Comuna</th>
+                              <th>Acciones</th>
+  
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for x in alumnos %}
+                          <tr>
+                              
+                              <td>{{x.rut_alumno}}-{{x.dv_alumno}}</td>
+                              <td>{{x.p_nombre}} {{x.s_nombre}} {{x.ap_paterno}} {{x.ap_materno}}</td>
+                              <td>{{x.fecha_nac}}</td>
+                              {% if x.genero == 'F' %}
+                              <td>Femenino</td>
+                              {% elif x.genero == 'M' %}
+                              <td>Masculino</td>
+                              {% endif %}
+                              <td>{{x.direccion}}</td>
+                              <td>{{x.nivel_socio}}</td>
+                              <td>{{x.rut_apoderado.p_nombre}} {{x.rut_apoderado.ap_paterno}}
+                              <td>{{x.id_colegio.nombre}}</td>
+                              <td>{{x.id_curso.grado}} {{x.id_curso.educacion}} {{x.id_curso.letra}}</td>
+                              <td>{{x.id_comuna.nombre  }}</td>
+                              
+                              <td><a name="" id="" class="btn btn-info" href="Alumnos/edicionAlumno/{{x.rut_alumno}}" role="button">Editar</a>  <a name="" id="" class="btn btn-danger" onclick="return ConfirmDelete()" href="Alumnos/eliminarAlumno/{{x.rut_alumno}}" role="button">Borrar</a></td>
+                              
+                              
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                  </table>
+                  
+                
+            </div>
+          </div>

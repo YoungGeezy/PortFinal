@@ -1,0 +1,98 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+<link rel="stylesheet" href="../../../static/css/edicion.css">
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <div class="card">
+
+            <div class="card-title">
+                <h2>Ingresar Horario</h2>
+            </div>
+
+                <div class="card-body">               
+                    <form action="/registrarHorario" method="POST">{% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label>Dia: </label>
+                            <select name="dia" class="form-select">
+                                
+                                <option value="Lunes">Lunes</option>
+                                <option value="Martes">Martes</option>
+                                <option value="Miercoles">Miercoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>
+                                
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Hora Inicio</label>
+                            <input type="text"  name="horainicio" class="form-control" minlength="5" maxlength="5" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Hora Termino</label>
+                            <input type="text"  name="horatermino" class="form-control" minlength="5" maxlength="5" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Año</label>
+                            <input type="number"  name="annio" class="form-control" value="2022" minlength="2012" required="required" maxlength="2025" readonly> 
+                        </div>
+                        <div class="form-group">
+                        <label>Asignatura: </label>
+                        <select name="asignatura" class="form-select">
+                            
+                            {% for x in asignaturas %}
+                            
+                            <option value="{{ x.id_asignatura }}">{{ x.nombre }}</option>
+                            
+                            {% endfor %}
+                        </select>
+                    </div>
+                        
+                    <div class="form-group">
+                        <label>Sala: </label>
+                        <select name="sala" class="form-select">
+                            
+                            {% for x in salas %}
+                            
+                            <option value="{{ x.id_sala }}">{{ x.id_sala }}</option>
+                            
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Profesor: </label>
+                        <select name="profesor" class="form-select">
+                            
+                            {% for x in profesores %}
+                            
+                            <option value="{{ x.rut_profesor }}">{{ x.p_nombre }} {{ x.s_nombre }} {{ x.ap_paterno }}</option>
+                            
+                            {% endfor %}
+                        </select>
+                    </div>
+                        <div class="form-group">
+                            <label>Curso: </label>
+                            <select name="curso" class="form-select">
+                                
+                                {% for x in cursos %}
+                                
+                                <option value="{{ x.id_curso }}" >{{ x.grado }} {{ x.educacion }} {{ x.letra }}</option>
+                                
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <br>
+                        
+                        
+                        
+
+                        <br>
+                        <button type="submit" class="btn btn-primary">Agregar</button>  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
